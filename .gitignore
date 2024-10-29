@@ -1,5 +1,5 @@
 .env
 __pycache__/*
-py-venv/*
+/py-venv/*
 hello.py
 requirement.txt
