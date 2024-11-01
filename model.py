@@ -14,17 +14,22 @@ class Todo(BaseModel):
                 "id": 1,
                 "item": {
                     "item": "Example schema!",
-                    "status": "in progress"
+                    "status": "nothing to do"
                 }
             }
         }
 
 class TodoItem(BaseModel):
-    item: str
+    item: Item
 
     class Config:
         schema_extra = { 
                 "example":{
-                    "item": "Read the next chapter of the book"
+                    "item": {
+                        "item": "Read the next chapter of the book",
+                        "status": "in progress"
                     }
+                    # "item": "Read the next chapter of the book"
+                    # }
+                }
         }
