@@ -39,7 +39,6 @@ async def update_todo(todo_data: TodoItem, todo_id: int = Path(..., title="The I
     for todo in todo_list:
         if todo.id == todo_id:
             todo.item.item = todo_data.item 
-            todo.item.status = todo_data.status
             return {
                 "message": "Todo updated successfully."
                 }
