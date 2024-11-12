@@ -3,9 +3,9 @@ __pycache__/*
 /py-venv/*
 hello.py
 requirement.txt
-planner/__pycache__
-planner/models/__pycache__
-planner/routes/__pycache__
+planner/__pycache__/*
+planner/models/__pycache__/*
+planner/routes/__pycache__/*
 api1.py
 Dockerfile
 model copy.py
