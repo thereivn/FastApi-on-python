@@ -1,41 +1,23 @@
-from pydantic import BaseModel, EmailStr 
 from typing import Optional, List
+from beanie import Document, Link
+from pydantic import BaseModel, EmailStr
 from models.events import Event
-class User(BaseModel):
+
+class User(Document):
     email: EmailStr
     password: str
-    events: Optional[List[Event]]
-    username: str
+    events: Optional[List[Link[Event]]]
+    class Settings:
+        name = "users"
 
     class Config:
-        schema_extra = {
-            "example": {
-            "email": "fastapi@packt.com",
-            "username": "strong!!!",
-            "events": [],
-            }
-        }
-
-class NewUser(User):
-    password: Optional[str] = None  # Убираем обязательность поля password
-    events: Optional[List[Event]] = None  # Делаем events необязательным
-
-    class Config:
-        schema_extra = {
-            "example": {
-                "email": "fastapi@packt.com",
-                "events": [],
-            }
-        }
-
-class UserSignIn(BaseModel):
-        email: EmailStr 
-        password: str
-        class Config:
-            schema_extra = {
-            "example": {
+        schema_extra = { "example" : {
             "email": "fastapi@packt.com",
             "password": "strong!!!",
             "events": [],
             }
-    }
+        }
+
+class UserSignIn(BaseModel):
+    email: EmailStr
+    password: str
